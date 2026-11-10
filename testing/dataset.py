@@ -1,7 +1,14 @@
 from pathlib import Path
 from PIL import Image
 import numpy as np
+import unicodedata
 
+def convert_unicode_fraction(text: str) -> str:
+    # NFKC normalization breaks complex glyphs down into standard characters
+    normalized = unicodedata.normalize('NFKC', text)
+    
+    # Replace the Unicode fraction slash (U+2044) with a standard slash
+    return normalized.replace('⁄', '/')
 
 def load_dataset(root_dir):
     root = Path(root_dir)
@@ -38,6 +45,8 @@ def load_dataset(root_dir):
                 ground_truth = gt_files[0].read_text(
                     encoding="utf-8"
                 ).strip()
+                ground_truth = convert_unicode_fraction(ground_truth)
+
 
             images = sorted(
                 file for file in recipe_dir.iterdir()
