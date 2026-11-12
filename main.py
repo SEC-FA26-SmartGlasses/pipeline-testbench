@@ -1,13 +1,12 @@
 from testing.dataset import load_dataset
 from testing.pipeline_def import Pipeline
-from testing.score import score_case, evaluate_pipeline
+from testing.score import evaluate_pipeline
 
 from paddleocr import PaddleOCR
 
+from pathlib import Path
 
-
-
-
+from gpu_based_pipelines import PaddlePipeline, PaddleVLPipeline, PaddleStructureV3Pipeline, UnlimitedOCRPipeline
 
 
 cases = load_dataset("E:/test_dataset")
@@ -27,14 +26,9 @@ class OCRPipeline(Pipeline):
         return output
 
 
-pipeline = OCRPipeline()
+pipelines = [PaddleStructureV3Pipeline, UnlimitedOCRPipeline] # defer initialization
 
-
-
-all_scores = evaluate_pipeline(cases, pipeline)
-
-# write to json
-import json
-
-with open("all_scores.json", "w") as f:
-    json.dump(all_scores, f, indent=4)
+for pipeline_class in pipelines:
+    pipeline = pipeline_class()
+    output_dir = Path("results") / type(pipeline).__name__
+    all_scores = evaluate_pipeline(cases, pipeline, output_dir=output_dir)
