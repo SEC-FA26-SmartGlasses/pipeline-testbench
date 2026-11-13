@@ -1,16 +1,17 @@
 from pipeline import Pipeline
 from ultralytics import YOLO
-from src.text_extraction.image_process import process_image
-from src.ocr.ocr import img_to_text
+## Change these if needed
+from image_process import process_image
+from ocr import img_to_text
 
 
-## Image Processing ##
-class ImageProcessing:
+## Tesseract OCR Pipeline ##
+class TesseractPipeline(Pipeline):
 
-    # Enable different filters
     def __init__(
         self,
         model_path,
+        config_oem_psm="--oem 3 --psm 6",
         padding=10,
         enable_skew=True,
         enable_clahe=True,
@@ -18,7 +19,13 @@ class ImageProcessing:
         enable_threshold=True
     ):
 
+        super().__init__()
+
+        # Initialize YOLO model
         self.yolo_model = YOLO(model_path)
+
+        # OCR settings
+        self.config_oem_psm = config_oem_psm
 
         # Image processing settings
         self.padding = padding
@@ -29,7 +36,8 @@ class ImageProcessing:
 
     def run(self, image):
 
-        return process_image(
+        # Process image
+        boxes = process_image(
             image,
             self.yolo_model,
             padding=self.padding,
@@ -39,30 +47,10 @@ class ImageProcessing:
             enable_threshold=self.enable_threshold
         )
 
-
-## Tesseract OCR Pipeline ##
-class TesseractPipeline(Pipeline):
-
-    def __init__(
-        self,
-        image_processor,
-        config_oem_psm="--oem 3 --psm 6"
-    ):
-
-        super().__init__()
-
-        self.image_processor = image_processor
-        self.config_oem_psm = config_oem_psm
-
-    def run(self, image):
-
-        # Process image
-        boxes = self.image_processor.run(image)
-
         # Extract text
         strings = img_to_text(
             boxes,
-            config=self.config_oem_psm
+            config_oem=self.config_oem_psm
         )
 
         # Return full text

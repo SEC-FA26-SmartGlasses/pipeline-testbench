@@ -2,24 +2,24 @@ import pytesseract
 from PIL import Image
 
 
-# config_oem_psm = r'--oem 3 --psm 6' 
+config_oem_psm = r'--oem 3 --psm 6' 
 # psm 6 for "single uniform block of text, best for paragraphs/labels" 
 # assuming input "blocks" are boxed text in image
 # control moved to 
 
 # if there are multiple boxes of text in the image,
 # return an array of strings where each element is the text from that box
-def img_to_text(boxes, config_oem = config_oem_psm):
+def img_to_text(boxes, config_oem):
     strings = []
     for n in boxes.values():
         # timeout=10 (seconds)
         # output_type=pytesseract.Output.STRING
         # n can be "either PIL Image, NumPy array or file path of the image to be processed by Tesseract"
-        strings.append(pytesseract.image_to_string(n["processed_crop"], config=config_oem))
+        strings.append(pytesseract.image_to_string(n["processed_crop"], config = config_oem))
     return strings
 
 def unprocessed_img_to_text(img):
-    return pytesseract.image_to_string(img, config=config_oem)
+    return pytesseract.image_to_string(img, config=config_oem_psm)
 
 
 if __name__ == "__main__":

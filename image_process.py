@@ -4,7 +4,6 @@ import numpy as np
 from deskew import determine_skew
 from skimage.restoration import estimate_sigma
 
-
 ## Measure the image quality ##
 def analyze_quality(gray):
 
@@ -79,7 +78,6 @@ def correct_skew(image):
 
     return corrected
 
-
 ## Apply filters ##
 def filter_image(
     image,
@@ -101,7 +99,6 @@ def filter_image(
     quality = analyze_quality(gray)
 
     processed = gray.copy()
-    operations = ["grayscale"]
 
     # CLAHE for brightness/contrast
     if enable_clahe and (
@@ -115,7 +112,6 @@ def filter_image(
         )
 
         processed = clahe.apply(processed)
-        operations.append("CLAHE")
 
     # Bilateral filter for denoising
     if enable_denoising and quality["noise"] > 12:
@@ -126,8 +122,6 @@ def filter_image(
             sigmaColor=35,
             sigmaSpace=35
         )
-
-        operations.append("bilateral_denoising")
 
     # Adaptive thresholding for shadowed text
     if enable_threshold and quality["lighting"] > 25:
@@ -150,9 +144,7 @@ def filter_image(
                 10
             )
 
-            operations.append("adaptive_threshold")
-
-    return processed, operations
+    return processed
 
 
 ## Process the image ##
@@ -161,6 +153,7 @@ def process_image(
     yolo_model,
     padding=10,
     enable_skew=True,
+    enable_text_warp=False,
     enable_clahe=True,
     enable_denoising=True,
     enable_threshold=True
@@ -193,7 +186,9 @@ def process_image(
     names = yolo_model.names
 
     # Process each detection
-    for index, (box, class_id) in enumerate(zip(boxes, class_ids)):
+    for index, (box, class_id) in enumerate(
+        zip(boxes, class_ids)
+    ):
 
         class_name = names[class_id]
 
@@ -216,30 +211,24 @@ def process_image(
         # Extract crop
         crop = image[y1:y2, x1:x2]
 
-        operations = []
-
         # Correct skew if enabled
         if enable_skew:
             crop = correct_skew(crop)
-            operations.append("skew_correction")
 
         # Apply filters
-        filtered_crop, filter_operations = filter_image(
+        filtered_crop = filter_image(
             crop,
             enable_clahe=enable_clahe,
             enable_denoising=enable_denoising,
             enable_threshold=enable_threshold
         )
 
-        operations.extend(filter_operations)
-
         # Store results
         processed_crops[index] = {
             "class_id": int(class_id),
             "class_name": class_name,
             "coordinates": [x1, y1, x2, y2],
-            "processed_crop": filtered_crop,
-            "operations": operations
+            "processed_crop": filtered_crop
         }
 
     return processed_crops
