@@ -1,0 +1,12 @@
+{
+  "bleu": 0.0,
+  "rougeL": 0.031055900621118012,
+  "cer": 0.9843225083986562,
+  "wer": 0.9849056603773585,
+  "prediction": "6 cloves, 1 tablespoon sugar",
+  "ground_truth": "36 GERMANY\nBEEF ROULADEN\n11/2 pounds round steak,\n1/4 inch thick\n1 teaspoon salt\nPepper to taste\n3 tablespoons finely chopped\nparsley\n1/4 cup chopped onion\n3 strips lean bacon, cut into\nhalves\n1/2 cup flour\n2 tablespoons shortening\n1/2 cup bouillon\n1/2 cup water\n2 tablespoons butter\n2 tablespoons flour\nCut beef into 6 pieces. Pound thin with meat mallet. Sprinkle with salt, pepper, parsley and onion. Place 1 strip bacon on each piece of beef. Roll to enclose filling; secure with toothpick. Roll in 1/2 cup flour, coating well. Brown in shortening in heavy saucepan. Add bouillon and water. Simmer, covered, for 2 hours. Remove beef rolls to serving platter; reserve 2/3 cup broth. Blend butter and 2 tablespoons flour in saucepan. Add reserved broth. Cook until thickened, stirring constantly. Serve with beef rolls. May bake beef in oven at 325° F. for 21/2 to 3 hours if preferred. Yield: 6 servings.\nSAUERBRATEN\n1 3 to 4-pound chuck roast\n2 onions, thinly sliced\n1/2 lemon, thinly sliced\n11/2 cups wine vinegar\n23/4 cups water\n1 tablespoon sugar\n6 cloves\n2 bay leaves\n1/4 teaspoon ginger\n1 tablespoon salt\n2 tablespoons shortening\n1/4 cup water\n1/3 cup finely crushed\ngingersnaps\nCombine roast, onions, lemon slices, vinegar, 23/4 cups water, sugar and seasonings in large bowl. Marinate, covered, in refrigerator for 36 hours to 3 days. Turn roast several times; do not pierce with fork. Drain, reserving marinade. Pat roast dry with paper towels. Brown in shortening in heavy saucepan. Add reserved marinade. Simmer, covered, for 2 to 4 hours or until tender. Remove roast to serving platter. Strain cooking liquid; measure 3/4 cup. Combine with 1/4 cup water and gingersnap crumbs in saucepan. Cook until thickened. Serve roast with gravy and noodles. Yield: 6 to 8 servings.",
+  "difficulty": "Medium",
+  "label": "recipe3",
+  "variant": "skew",
+  "raw_prediction": "6cloves 1 tablespoon sugar "
+}

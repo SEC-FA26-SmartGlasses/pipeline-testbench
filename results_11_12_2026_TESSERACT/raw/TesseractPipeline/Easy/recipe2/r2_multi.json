@@ -1,0 +1,11 @@
+{
+  "bleu": 0.5504639998980836,
+  "rougeL": 0.6397849462365592,
+  "cer": 0.5512699905926622,
+  "wer": 0.5737704918032787,
+  "prediction": "First, begin by peeling a large pile of cucumbers. Slice the cucumbers Nnto thi\n’ y a : oS. in sj +\n\nquarter of an inch thick or less) and pile them into the bottom of a glass or china bowl, Sprinkle\nwith salt, pepper and ace any other pickle seasoning you like: Soe one part vinegar an aw o parts\ncover the cucumbers. | S, Tyost ey #h liquid to amply\n\nCover bow! with lid or cling wrap and set on counter ot in Teibigst eh owt AL least 4 nours. *\"\n\nlonger the cucumbers sit in the juice, the more flavor ney will absorb and the softer the See wit\n\nbecome. The good thing about the vinegar pase, however, 3S that YOU Can slice up more eqcusber\nand just throw them in the bowl before you go to bet each night. We only change oat me vO\nabout once a week. Keep chilled when not in vse:\n\nDirections:\n\n-Water\n\nFaux Pickles\n\n-Vinegar (white or cider)\n\nIMgredients:\n\n-Kresh cucumbers\n\n~Additional seasoning if desired (onion, garlic, dill, etc)\n\nSalt/ pepper to taste\n\nFaux Pickles—Printable Version\n",
+  "ground_truth": "﻿Faux Pickles–Printable Version \nFaux Pickles \nIngredients:\n-Fresh cucumbers\n-Salt/pepper to taste\n-Additional seasoning if desired (onion, garlic, dill, etc)\n-Vinegar (white or cider)\n-Water \nDirections: \nFirst, begin by peeling a large pile of cucumbers. Slice the cucumbers into thin slices (about a quarter of an inch thick or less) and pile them into the bottom of a glass or china bowl. Sprinkle with salt, pepper and add any other pickle seasoning you like. Pour one part vinegar and two parts water over the slices. I don’t measure this, I just eyeball it until there is enough liquid to amply cover the cucumbers. \nCover bowl with lid or cling wrap and set on counter or in refrigerator for at least 4 hours. The longer the cucumbers sit in the juice, the more flavor they will absorb and the softer the slices will become. The good thing about the vinegar base, however, is that you can slice up more cucumbers and just throw them in the bowl before you go to bed each night. We only change out the juice about once a week. Keep chilled when not in use.",
+  "difficulty": "Easy",
+  "label": "recipe2",
+  "variant": "multi"
+}

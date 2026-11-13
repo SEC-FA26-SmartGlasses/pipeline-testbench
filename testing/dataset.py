@@ -1,5 +1,6 @@
 from pathlib import Path
 from PIL import Image
+import cv2
 import numpy as np
 import unicodedata
 
@@ -66,7 +67,7 @@ def load_dataset(root_dir):
                 if variant.startswith(prefix + "_"):
                     variant = variant[len(prefix)+1:]
 
-                img = Image.open(image)
+                img = cv2.imread(image)
                 img_data = np.asarray(img)
 
                 # append test case

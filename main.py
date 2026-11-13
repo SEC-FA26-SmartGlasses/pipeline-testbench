@@ -1,34 +1,29 @@
 from testing.dataset import load_dataset
 from testing.pipeline_def import Pipeline
-from testing.score import evaluate_pipeline
+from testing.tesseract_pipelines import TesseractPipeline
+from testing.score import evaluate_pipeline, rescore_results
+from testing.postprocess_text import clean_ocr_text
 
 from paddleocr import PaddleOCR
 
 from pathlib import Path
 
-from gpu_based_pipelines import PaddlePipeline, PaddleVLPipeline, PaddleStructureV3Pipeline, UnlimitedOCRPipeline
+from testing.gpu_based_pipelines import PaddlePipeline, PaddleVLPipeline, PaddleStructureV3Pipeline, UnlimitedOCRPipeline
 
 
 cases = load_dataset("E:/test_dataset")
 
+pipelines = [TesseractPipeline] # defer initialization
 
-class OCRPipeline(Pipeline):
-
-    def __init__(self):
-        super().__init__()
-        self.ocr = PaddleOCR(
-            use_textline_orientation=True, use_doc_unwarping=True, lang="en"
-        )
-
-    def run(self, image):
-        output = self.ocr.predict(image)
-        output = "\n".join(output[0]["rec_texts"])
-        return output
+# for pipeline_class in pipelines:
+#     if pipeline_class is TesseractPipeline:
+#         pipeline = TesseractPipeline(
+#             "text_extraction_model.pt",
+#         )
+#     else:    
+#         pipeline = pipeline_class()
+#     output_dir = Path("results_11_12_2026_TESSERACT/raw") / type(pipeline).__name__
+#     all_scores = evaluate_pipeline(cases, pipeline, output_dir=output_dir)
 
 
-pipelines = [PaddleStructureV3Pipeline, UnlimitedOCRPipeline] # defer initialization
-
-for pipeline_class in pipelines:
-    pipeline = pipeline_class()
-    output_dir = Path("results") / type(pipeline).__name__
-    all_scores = evaluate_pipeline(cases, pipeline, output_dir=output_dir)
+rescore_results(clean_ocr_text, "results_11_12_2026_TESSERACT/raw", "results_11_12_2026_TESSERACT/postprocessed")

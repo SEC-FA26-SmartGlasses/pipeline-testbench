@@ -1,0 +1,12 @@
+{
+  "bleu": 0.014415025693479355,
+  "rougeL": 0.09621993127147767,
+  "cer": 0.8357558139534884,
+  "wer": 0.958904109589041,
+  "prediction": "Cover and refrigerate leftovers for up to 2 days. Remove garlic clove before using. Freshly ground black pepper, salt, 1 garlic clove, 3 tablespoons extra-virgin olive oil, 1 teaspoon white wine vinegar, 1 tablespoon freshly squeezed lemon juice, 1 teaspoon finely grated lemon zest (about 1/4 lemon's worth).",
+  "ground_truth": "Lemon Vinaigrette Makes about 1/2 cup\n1/2 teaspoon finely grated lemon zest (about 1/2 lemon's worth)\n2 tablespoons freshly squeezed lemon juice\n1 1/2 teaspoons extra-virgin olive oil\n1 garlic clove\nSalt\nFreshly ground black pepper\nPour the lemon zest, juice, vinegar, and olive oil into a small bowl or jar. Smash the garlic clove against the counter with the palm of your hand and add to the vinaigrette. Season with a generous pinch of salt and a pinch of pepper. Stir or shake to combine, then taste with a leaf of lettuce and adjust salt and acid as needed. Let sit for at least 10 minutes, and remove garlic clove before using.\nCover and refrigerate leftovers for up to 2 days.\nIdeal for herb salad, arugula, garden lettuces, romaine and Little Gem lettuce, cucumbers, boiled vegetables, and for Avocado Salad, Shaved Fennel and Radish Salad, Slow-Roasted Salmon.\nVariation\nTo make Lemon-Anchovy Vinaigrette, coarsely chop 2 soaked, fileted salt-packed anchovies (or 4 filets), then pound them into a fine paste in a mortar and pestle. The more you break them down, the better the dressing will be. Stir the anchovies and an additional 1/2 clove of finely grated or pounded garlic into the dressing and continue as above. Serve with arugula, Belgian endive, boiled vegetables of any kind, chicories, or shaved winter vegetables such as carrots, turnips, and celery root.",
+  "difficulty": "Medium",
+  "label": "recipe1",
+  "variant": "multi",
+  "raw_prediction": " \n\n## \n\nCover and refrigerate leftovers for up to 2 days.\n\nremove garlic clove before using.\n\n\n\nFreshly ground black pepper Salt 1 garlic clove s tablespoons extra-virgin olive oil iV teaspoons white wine vinegar atablespoons freshly squeezed lemon juice M teaspoon finely grated lemon zest (about V lemon's woreh)"
+}
